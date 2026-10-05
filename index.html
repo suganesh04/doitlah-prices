@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102e3a">
+  <meta name="description" content="Do It Lah+ electrical and office supplies price workspace.">
+  <title>Price workspace · Do It Lah+</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="conflicts.css">
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="brand-mark">d+</span><span>Do It Lah<span class="plus">+</span><small>PRICE WORKSPACE</small></span></div><div class="account"><span id="account-name"></span><button id="logout" class="ghost" hidden>Sign out</button></div></header>
+  <main>
+    <section class="heading"><div><p class="eyebrow">SUPPLY CATALOGUE</p><h1>Your lists. Your prices.</h1></div><div class="heading-actions"><button id="refresh" class="ghost" hidden>Refresh prices</button><button id="download" class="dark" disabled>Download Excel</button></div></section>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <section id="auth" class="auth-panel" hidden><div><p class="eyebrow">TEAM ACCESS</p><h2>Welcome back.</h2><p>Sign in to view and update your shared prices.</p></div><form id="login-form"><label>Email<input id="email" type="email" autocomplete="username" required></label><label>Password<input id="password" type="password" autocomplete="current-password" required></label><button class="dark" type="submit" id="login-button">Sign in</button><p id="login-error" class="error" role="alert"></p></form></section>
+    <section id="workspace" hidden>
+      <div class="list-tabs" role="tablist" aria-label="Supply lists"><button role="tab" aria-selected="true" data-list="electrical">Electrical <span>202</span></button><button role="tab" aria-selected="false" data-list="office">Office supplies <span>236</span></button></div>
+      <div class="overview"><div><span class="overview-label">PRICE COVERAGE</span><strong id="coverage">0 / 202</strong></div><div class="coverage-track" aria-hidden="true"><div id="coverage-bar"></div></div><p>QTY = quantity · MYR = unit price</p></div>
+      <div class="filters"><label class="search-label"><span class="sr-only">Search items</span><input id="search" type="search" placeholder="Search an item or category…" autocomplete="off"></label><label><span class="sr-only">Category</span><select id="category"><option value="">All categories</option></select></label><label><span class="sr-only">Price status</span><select id="price-filter"><option value="all">All items</option><option value="missing">Without a price</option><option value="priced">With a price</option></select></label></div>
+      <div class="list-caption"><span id="results-count"></span><span>Fill in what you know. Leave the rest blank.</span></div>
+      <div class="table-header" aria-hidden="true"><span>Category / item</span><span>QTY</span><span>MYR</span></div>
+      <div id="items" class="items"></div><div id="empty" class="empty" hidden><h2>No matching items</h2><p>Try another search or category.</p></div>
+      <div class="savebar"><div><strong id="save-status" aria-live="polite">No unsaved changes</strong><small id="save-detail">Changes are saved to your shared workspace.</small></div><button id="save" class="accent" disabled>Save changes</button></div>
+    </section>
+  </main>
+  <dialog id="download-dialog"><form method="dialog"><div class="dialog-head"><h2>Download Excel</h2><button class="close" aria-label="Close download options" value="cancel">×</button></div><p>Category / Item / QTY / MYR</p><label>Which list?<select id="export-list"><option value="current">Current list</option><option value="both">Both lists, separate tabs</option></select></label><label>Which items?<select id="export-scope"><option value="all">All items</option><option value="filled">Items with a quantity or price</option><option value="visible">Current filtered items</option></select></label><p id="export-note" class="muted">Your current entries are included, even before saving.</p><button type="button" class="dark" id="export-confirm">Download .xlsx</button></form></dialog>
+  <noscript>This workspace needs JavaScript enabled.</noscript>
+</body>
+</html>
